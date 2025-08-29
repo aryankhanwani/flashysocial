@@ -8,7 +8,7 @@ export function InstagramLandingCss() {
       "public",
       "instagram-landing",
       "css",
-      "template.css",
+      // "template.css",
     ),
     {
       encoding: "utf8",
