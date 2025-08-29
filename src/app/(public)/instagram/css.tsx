@@ -1,127 +1,19 @@
+import fs from "fs";
+import path from "path";
+
 export function InstagramLandingCss() {
-  // Using inline styles instead of file system to avoid build issues
-  const cssContent = `
-    /* Instagram Landing Styles */
-    .instagram-landing {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      line-height: 1.6;
-      color: #333;
-    }
-    
-    .instagram-landing * {
-      box-sizing: border-box;
-    }
-    
-    .instagram-landing .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-    
-    .instagram-landing .hero {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      padding: 80px 0;
-      text-align: center;
-    }
-    
-    .instagram-landing .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      font-weight: 700;
-    }
-    
-    .instagram-landing .hero p {
-      font-size: 1.25rem;
-      margin-bottom: 2rem;
-      opacity: 0.9;
-    }
-    
-    .instagram-landing .btn {
-      display: inline-block;
-      padding: 12px 24px;
-      background: #fff;
-      color: #667eea;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-    
-    .instagram-landing .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    }
-    
-    .instagram-landing .features {
-      padding: 80px 0;
-      background: #f8f9fa;
-    }
-    
-    .instagram-landing .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 40px;
-      margin-top: 40px;
-    }
-    
-    .instagram-landing .feature-card {
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-    
-    .instagram-landing .feature-card h3 {
-      color: #667eea;
-      margin-bottom: 15px;
-      font-size: 1.5rem;
-    }
-    
-    .instagram-landing .testimonials {
-      padding: 80px 0;
-    }
-    
-    .instagram-landing .testimonial-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
-    }
-    
-    .instagram-landing .testimonial-card {
-      background: #f8f9fa;
-      padding: 30px;
-      border-radius: 10px;
-      border-left: 4px solid #667eea;
-    }
-    
-    .instagram-landing .testimonial-card p {
-      font-style: italic;
-      margin-bottom: 15px;
-    }
-    
-    .instagram-landing .testimonial-card .author {
-      font-weight: 600;
-      color: #667eea;
-    }
-    
-    @media (max-width: 768px) {
-      .instagram-landing .hero h1 {
-        font-size: 2rem;
-      }
-      
-      .instagram-landing .hero p {
-        font-size: 1rem;
-      }
-      
-      .instagram-landing .feature-grid,
-      .instagram-landing .testimonial-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  `;
+  const cssContent = fs.readFileSync(
+    path.join(
+      process.cwd(),
+      "public",
+      "instagram-landing",
+      "css",
+      "template.css",
+    ),
+    {
+      encoding: "utf8",
+    },
+  );
 
   return (
     <style
