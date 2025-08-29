@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { InstagramLandingCss } from "./css";
 import { InstagramGetStartedButton } from "./get-started-button";
-import './instagram-styles.css';
 
 export const metadata: Metadata = {
   title: "Flashy Social | Instagram Growth Service",
@@ -40,9 +40,8 @@ export const metadata: Metadata = {
 export default function Layout({ children }: { children: ReactNode }) {
   return (
     <>
-      {/* Fallback CSS link for production */}
-      <link rel="stylesheet" href="/instagram-landing/css/template.css" />
-      
+      <InstagramLandingCss />
+
       <div className="page-wrapper">
         <div
           data-animation="default"
@@ -433,10 +432,10 @@ export default function Layout({ children }: { children: ReactNode }) {
                   <div className="w-layout-grid testimonials_component">
                     <div className="testimonial_item">
                       <div className="text-size-custom text-weight-medium s">
-                        &ldquo;Using FlashySocial for 3 months now and after trying
+                        “Using FlashySocial for 3 months now and after trying
                         many services in the market, I can confidently say that
                         they are one of the most reliable ones out there and
-                        always deliver&rdquo;
+                        always deliver”
                       </div>
                       <div className="padding-bottom padding-medium" />
                       <div className="stars-icon w-embed">
@@ -493,9 +492,9 @@ export default function Layout({ children }: { children: ReactNode }) {
                     </div>
                     <div className="testimonial_item">
                       <div className="text-size-custom text-weight-medium s">
-                        &ldquo;Sooo gladd I gave them a try after thinking about it
+                        “Sooo gladd I gave them a try after thinking about it
                         for a while. Massive amounts of streams in past two
-                        months from their site.&rdquo;
+                        months from their site.”
                       </div>
                       <div className="padding-bottom padding-medium" />
                       <div className="stars-icon w-embed">
@@ -552,10 +551,10 @@ export default function Layout({ children }: { children: ReactNode }) {
                     </div>
                     <div className="testimonial_item pink top">
                       <div className="text-size-custom text-weight-medium s">
-                        &ldquo;Delivered everything exactly as I ordered. No
+                        “Delivered everything exactly as I ordered. No
                         complaints and customer service was there when I had
-                        questions. That&apos;s more than I got from other social
-                        media promotion sites I tried&rdquo;
+                        questions. That’s more than I got from other social
+                        media promotion sites I tried”
                       </div>
                       <div className="padding-bottom padding-medium" />
                       <div className="stars-icon w-embed">
@@ -612,9 +611,9 @@ export default function Layout({ children }: { children: ReactNode }) {
                     </div>
                     <div className="testimonial_item">
                       <div className="text-size-custom text-weight-medium s">
-                        &ldquo;Whatever I bought from other providers just kept on
+                        “Whatever I bought from other providers just kept on
                         dropping. But since I am with them, all is stable and
-                        good. love the service too&rdquo;
+                        good. love the service too”
                       </div>
                       <div className="padding-bottom padding-medium" />
                       <div className="stars-icon w-embed">
@@ -671,9 +670,9 @@ export default function Layout({ children }: { children: ReactNode }) {
                     </div>
                     <div className="testimonial_item hide-mobile-landscape">
                       <div className="text-size-custom text-weight-medium s">
-                        &ldquo;Wasnt sure it would work and started with the smallest
+                        “Wasnt sure it would work and started with the smallest
                         package. Did exactly what they say and since then my
-                        orders keep getting bigger and bigger&rdquo;
+                        orders keep getting bigger and bigger”
                       </div>
                       <div className="padding-bottom padding-medium" />
                       <div className="stars-icon w-embed">
@@ -730,9 +729,9 @@ export default function Layout({ children }: { children: ReactNode }) {
                     </div>
                     <div className="testimonial_item hide-mobile-landscape">
                       <div className="text-size-custom text-weight-medium s">
-                        &ldquo;If you&apos;re looking for a strong promotion strategy and
+                        “If you’re looking for a strong promotion strategy and
                         awesome people to work with, go no further than
-                        FlashySocial.&rdquo;
+                        FlashySocial.”
                       </div>
                       <div className="padding-bottom padding-medium" />
                       <div className="stars-icon w-embed">
@@ -836,7 +835,7 @@ export default function Layout({ children }: { children: ReactNode }) {
                             The number of fans and likes and other metrics of
                             your channel is one of the most common indicators of
                             success and health of your channel. If you are going
-                            to boost your profile, you&apos;ve got to do everything
+                            to boost your profile, you’ve got to do everything
                             that you can to boost your numbers, because that is
                             what your viewers will see first. s, as these are
                             what you see first. This means producing the best
@@ -980,7 +979,7 @@ export default function Layout({ children }: { children: ReactNode }) {
                         <strong>for Everyone</strong>
                       </h2>
                       <div className="text-size-custom text-weight-medium s">
-                                                    It doesn&apos;t matter whether you are a musician, a business
+                        It doesn’t matter whether you are a musician, a business
                         or simply run a small cooking channel. <br />
                         <br />
                         Our <strong>universal methods</strong> work for any
