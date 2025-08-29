@@ -40,6 +40,9 @@ export const metadata: Metadata = {
 export default function Layout({ children }: { children: ReactNode }) {
   return (
     <>
+      {/* Fallback CSS link for production */}
+      <link rel="stylesheet" href="/instagram-landing/css/template.css" />
+      
       <div className="page-wrapper">
         <div
           data-animation="default"

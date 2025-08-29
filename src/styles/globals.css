@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import Instagram landing styles for production */
+@import url('/instagram-landing/css/template.css');
+
 * {
   scroll-behavior: smooth;
 }

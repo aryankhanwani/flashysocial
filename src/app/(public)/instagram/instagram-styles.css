@@ -1,125 +1,139 @@
-/* Instagram Landing Styles - Production Ready */
+/* Instagram Landing Fallback Styles - Production Ready */
 
-/* Import the original CSS file content */
-@import url('/instagram-landing/css/template.css');
-
-/* Additional fallback styles in case the import fails */
-.instagram-landing {
+/* Essential fallback styles in case the main CSS doesn't load */
+.page-wrapper {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   line-height: 1.6;
   color: #333;
 }
 
-.instagram-landing * {
+.page-wrapper * {
   box-sizing: border-box;
 }
 
-.instagram-landing .container {
+/* Ensure basic layout works */
+.navbar_component {
+  position: relative;
+  z-index: 1000;
+}
+
+.navbar_container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
-.instagram-landing .hero {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  padding: 80px 0;
-  text-align: center;
+.navbar_logo {
+  max-height: 50px;
+  width: auto;
 }
 
-.instagram-landing .hero h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  font-weight: 700;
+.navbar_menu {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
-.instagram-landing .hero p {
-  font-size: 1.25rem;
-  margin-bottom: 2rem;
-  opacity: 0.9;
+.navbar_link {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
 }
 
-.instagram-landing .btn {
+.navbar_link:hover {
+  color: #667eea;
+}
+
+.button {
   display: inline-block;
   padding: 12px 24px;
-  background: #fff;
-  color: #667eea;
+  background: #667eea;
+  color: white;
   text-decoration: none;
   border-radius: 6px;
   font-weight: 600;
   transition: all 0.3s ease;
 }
 
-.instagram-landing .btn:hover {
+.button:hover {
+  background: #5a67d8;
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
-.instagram-landing .features {
+/* Hero section fallback */
+.hero_component {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 80px 0;
+  text-align: center;
+}
+
+.hero_heading {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.hero_text {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+/* Testimonials fallback */
+.testimonials_component {
   padding: 80px 0;
   background: #f8f9fa;
 }
 
-.instagram-landing .feature-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 40px;
-  margin-top: 40px;
-}
-
-.instagram-landing .feature-card {
+.testimonial_item {
   background: white;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  text-align: center;
+  margin-bottom: 20px;
 }
 
-.instagram-landing .feature-card h3 {
-  color: #667eea;
-  margin-bottom: 15px;
-  font-size: 1.5rem;
-}
-
-.instagram-landing .testimonials {
-  padding: 80px 0;
-}
-
-.instagram-landing .testimonial-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  margin-top: 40px;
-}
-
-.instagram-landing .testimonial-card {
-  background: #f8f9fa;
-  padding: 30px;
-  border-radius: 10px;
+.testimonial_item.pink {
   border-left: 4px solid #667eea;
 }
 
-.instagram-landing .testimonial-card p {
-  font-style: italic;
-  margin-bottom: 15px;
+/* FAQ fallback */
+.faq_component {
+  padding: 80px 0;
 }
 
-.instagram-landing .testimonial-card .author {
-  font-weight: 600;
-  color: #667eea;
+.faq_accordion {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  overflow: hidden;
 }
 
+.faq_question {
+  padding: 20px;
+  cursor: pointer;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.faq_answer {
+  padding: 20px;
+}
+
+/* Responsive fallback */
 @media (max-width: 768px) {
-  .instagram-landing .hero h1 {
+  .hero_heading {
     font-size: 2rem;
   }
   
-  .instagram-landing .hero p {
+  .hero_text {
     font-size: 1rem;
   }
   
-  .instagram-landing .feature-grid,
-  .instagram-landing .testimonial-grid {
-    grid-template-columns: 1fr;
+  .navbar_menu {
+    flex-direction: column;
+    gap: 10px;
   }
 }
