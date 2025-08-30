@@ -73,7 +73,7 @@ export default function Layout({
                     try { 
                       localStorage.setItem(key, value); 
                     } catch (_) {
-                      console.warn('[Affiliate Debug] LocalStorage failed for:', key);
+                      console.warn('[Affiliate] LocalStorage failed for:', key);
                     } 
                     setCookie(key, value, 30); 
                   } 
@@ -99,7 +99,7 @@ export default function Layout({
                     // Pixel fired successfully
                   };
                   pixel.onerror = function() {
-                    console.error('[Affiliate Debug] Pixel failed to load');
+                    console.error('[Affiliate] Pixel failed to load');
                   };
                 })();
               `,

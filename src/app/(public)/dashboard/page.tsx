@@ -197,7 +197,7 @@ export default async function Page({
                     if (window.trackAffiliateConversion) {
                       window.trackAffiliateConversion(orderId, saleAmount);
                     } else {
-                      console.error('[Conversion Trigger Debug] Function still not found after fallback');
+                      console.error('[Affiliate] Function still not found after fallback');
                     }
                   }, 1000);
                 }
