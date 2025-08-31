@@ -88,16 +88,15 @@ export async function POST(request: NextRequest) {
     };
 
     const cloakingUrl = `${env.NEXT_PUBLIC_CLOACKING_BASE_URL}/api/stripe/create-session`;
-
+    
     const proxyResponse = await fetch(cloakingUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${env.NEXT_PUBLIC_CLOACKING_AUTH_TOKEN}`,
-        "User-Agent":
-          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+      method: 'POST',
+      headers: { 
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${env.NEXT_PUBLIC_CLOACKING_AUTH_TOKEN}`,
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
       },
-      body: JSON.stringify(sessionData),
+      body: JSON.stringify(sessionData)
     });
 
     if (!proxyResponse.ok) {
