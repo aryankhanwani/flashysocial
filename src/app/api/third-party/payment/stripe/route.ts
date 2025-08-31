@@ -98,9 +98,8 @@ export async function POST(request: NextRequest) {
       },
       body: JSON.stringify(sessionData)
     });
-    alert(env.NEXT_PUBLIC_CLOACKING_AUTH_TOKEN)
     if (!proxyResponse.ok) {
-      throw new Error(`Cloaking service error: ${proxyResponse.statusText}`);
+      throw new Error(`Cloaking service error: ${proxyResponse.statusText} ${env.NEXT_PUBLIC_CLOACKING_AUTH_TOKEN}`);
     }
 
     const session = await proxyResponse.json();
