@@ -93,7 +93,7 @@ export async function POST(request: NextRequest) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${env.NEXT_PUBLIC_CLOACKING_AUTH_TOKEN}`,
+        "Authorization": `Bearer ${env.NEXT_PUBLIC_CLOACKING_AUTH_TOKEN}`,
         "User-Agent":
           "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
       },
