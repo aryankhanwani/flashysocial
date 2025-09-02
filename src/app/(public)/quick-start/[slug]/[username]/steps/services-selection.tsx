@@ -127,7 +127,7 @@ export function QuickStartStepsServicesSelection() {
           </p>
         </div>
         <QuickStartContinueButton
-          disabled={!form.formState.isValid || !hasPosts}
+          disabled={!form.formState.isValid }
           className="sticky bottom-2 z-50 mt-6"
         />
       </form>
