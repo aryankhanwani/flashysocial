@@ -60,7 +60,7 @@ export function QuickStartStepsSelectPosts() {
             No posts available
           </h3>
           <p className="text-red-700 mb-4">
-            Your account is either private or you don't have any posts. 
+            Your account is either private or you don&apos;t have any posts. 
             Services that require post selection (likes, comments, views) cannot be used.
           </p>
           <button 

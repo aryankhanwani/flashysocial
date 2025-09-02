@@ -104,7 +104,7 @@ export function QuickStartStepsServicesSelection() {
                   No posts available
                 </h3>
                 <div className="mt-2 text-sm text-red-700">
-                  <p>Your account is either private or you don't have any posts. Services that require post selection (likes, comments, views) are disabled.</p>
+                  <p>Your account is either private or you don&apos;t have any posts. Services that require post selection (likes, comments, views) are disabled.</p>
                 </div>
               </div>
             </div>
