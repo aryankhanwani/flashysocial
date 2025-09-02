@@ -18,39 +18,59 @@ export function QuickStartStepsSelectPosts() {
       <h1 className="mb-2 mt-8 text-center text-xl font-semibold">
         Please select the articles you want to promote.
       </h1>
-      <div className="grid grid-cols-2 gap-2 md:grid-cols-3">
-        {userPosts.map((post) => (
-          <PostCard
-            key={post.id}
-            post={post}
-            checked={selectedPosts.some((x) => x.id === post.id)}
-            onSelectedChange={(selected) =>
-              setSelectedPosts((prev) => {
-                if (!selected) return prev.filter((x) => x.id !== post.id);
-                return [...prev, post];
-              })
-            }
-          />
-        ))}
-      </div>
+      
+      {userPosts.length > 0 ? (
+        <>
+          <div className="grid grid-cols-2 gap-2 md:grid-cols-3">
+            {userPosts.map((post) => (
+              <PostCard
+                key={post.id}
+                post={post}
+                checked={selectedPosts.some((x) => x.id === post.id)}
+                onSelectedChange={(selected) =>
+                  setSelectedPosts((prev) => {
+                    if (!selected) return prev.filter((x) => x.id !== post.id);
+                    return [...prev, post];
+                  })
+                }
+              />
+            ))}
+          </div>
 
-      {userPosts.length <= 0 && (
-        <p className="block w-full text-center text-muted-foreground">
-          No posts available.
-        </p>
+          <div className="sticky bottom-0 z-50 mt-6 bg-white py-2">
+            <QuickStartContinueButton
+              className="bottom-2 z-50 mt-2"
+              onClick={() =>
+                navigate({
+                  step: "billing",
+                })
+              }
+              disabled={selectedPosts.length <= 0}
+            />
+          </div>
+        </>
+      ) : (
+        <div className="rounded-lg bg-red-50 border border-red-200 p-6 text-center">
+          <div className="mx-auto mb-4 h-12 w-12 text-red-400">
+            <svg fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+            </svg>
+          </div>
+          <h3 className="text-lg font-medium text-red-800 mb-2">
+            No posts available
+          </h3>
+          <p className="text-red-700 mb-4">
+            Your account is either private or you don't have any posts. 
+            Services that require post selection (likes, comments, views) cannot be used.
+          </p>
+          <button 
+            onClick={() => navigate({ step: "services-selection" })}
+            className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
+          >
+            Go Back to Services
+          </button>
+        </div>
       )}
-
-      <div className="sticky bottom-0 z-50 mt-6 bg-white py-2">
-        <QuickStartContinueButton
-          className="bottom-2 z-50 mt-2"
-          onClick={() =>
-            navigate({
-              step: "billing",
-            })
-          }
-          disabled={selectedPosts.length <= 0}
-        />
-      </div>
     </div>
   );
 }

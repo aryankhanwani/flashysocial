@@ -15,6 +15,7 @@ declare namespace OrderSlider {
     defaultQuantity?: number;
     step?: number;
     requiresArticlesSelection?: boolean;
+    disabled?: boolean;
   }
 }
 
@@ -30,6 +31,7 @@ export const OrderSlider = forwardRef<HTMLDivElement, OrderSlider.Props>(
       defaultQuantity = 0,
       step = 1,
       requiresArticlesSelection: _requiresArticlesSelection = false,
+      disabled = false,
       ...props
     },
     ref,
@@ -41,7 +43,7 @@ export const OrderSlider = forwardRef<HTMLDivElement, OrderSlider.Props>(
         control={form.control}
         name={name}
         render={({ field }) => (
-          <div>
+          <div className={cn(disabled && "opacity-50")}>
             <div
               ref={ref}
               {...props}
@@ -50,10 +52,12 @@ export const OrderSlider = forwardRef<HTMLDivElement, OrderSlider.Props>(
                 className,
               )}
             >
-              <p>
+              <p className={cn(disabled && "text-gray-500")}>
                 {numberToFormatted(Number(field.value ?? 0), 0)} {label}
               </p>
-              <p>${numberToFormatted(pricePerUnit * field.value ?? 0)}</p>
+              <p className={cn(disabled && "text-gray-500")}>
+                ${numberToFormatted(pricePerUnit * field.value ?? 0)}
+              </p>
             </div>
             <Slider
               {...field}
@@ -64,8 +68,14 @@ export const OrderSlider = forwardRef<HTMLDivElement, OrderSlider.Props>(
               min={min}
               max={max}
               className="w-full"
-              onValueChange={([value]) => field.onChange(value)}
+              onValueChange={([value]) => !disabled && field.onChange(value)}
+              disabled={disabled}
             />
+            {disabled && (
+              <p className="mt-2 text-xs text-gray-500">
+                This service requires posts to be available
+              </p>
+            )}
           </div>
         )}
       />

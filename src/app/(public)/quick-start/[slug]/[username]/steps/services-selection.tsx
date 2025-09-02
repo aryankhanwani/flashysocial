@@ -47,8 +47,30 @@ export function QuickStartStepsServicesSelection() {
     [services, values],
   )!;
 
+  // Check if user has any posts
+  const hasPosts = useMemo(() => {
+    return order.userPosts.length > 0;
+  }, [order.userPosts.length]);
+
   const onSubmit = useCallback(
     (orderData: yup.InferType<typeof provider.orderSchema>) => {
+      // If no posts available, reset services that require article selection
+      if (!hasPosts) {
+        const resetData = { ...orderData };
+        provider.config.services
+          .filter((x) => x.requiresArticlesSelection)
+          .forEach((service) => {
+            resetData[service.key as keyof typeof resetData] = 0;
+          });
+        order.setServices(resetData);
+        
+        // Navigate directly to billing since no article selection is needed
+        navigate({
+          step: "billing",
+        });
+        return;
+      }
+
       order.setServices(orderData);
       const fieldsToRequireArticlesSelection = provider.config.services
         .filter((x) => x.requiresArticlesSelection)
@@ -62,15 +84,40 @@ export function QuickStartStepsServicesSelection() {
         step: requireArticlesSelection ? "select-posts" : "billing",
       });
     },
-    [navigate, order, provider],
+    [navigate, order, provider, hasPosts],
   );
 
   return (
     <FormProvider {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
+        {/* Error message when no posts available */}
+        {!hasPosts && (
+          <div className="mb-6 rounded-lg bg-red-50 border border-red-200 p-4">
+            <div className="flex items-center">
+              <div className="flex-shrink-0">
+                <svg className="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <div className="ml-3">
+                <h3 className="text-sm font-medium text-red-800">
+                  No posts available
+                </h3>
+                <div className="mt-2 text-sm text-red-700">
+                  <p>Your account is either private or you don't have any posts. Services that require post selection (likes, comments, views) are disabled.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
         <div className="mt-6 space-y-6">
           {services.map((benef) => (
-            <OrderSlider key={benef.name} {...benef} />
+            <OrderSlider 
+              key={benef.name} 
+              {...benef} 
+              disabled={!hasPosts && benef.requiresArticlesSelection}
+            />
           ))}
         </div>
         <div className="mt-6 flex items-center justify-between border-t pt-4">
@@ -80,7 +127,7 @@ export function QuickStartStepsServicesSelection() {
           </p>
         </div>
         <QuickStartContinueButton
-          disabled={!form.formState.isValid}
+          disabled={!form.formState.isValid || !hasPosts}
           className="sticky bottom-2 z-50 mt-6"
         />
       </form>

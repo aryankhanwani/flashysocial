@@ -25,13 +25,21 @@ export function QuickStartOrderStepView() {
   
   const currentView = useMemo(() => stepViews[params.step], [params.step]);
 
-  const { services } = useOrderContext();
+  const { services, userPosts } = useOrderContext();
   
   useEffect(() => {
     setIsTransitioning(true);
     const timer = setTimeout(() => setIsTransitioning(false), 300);
     return () => clearTimeout(timer);
   }, [params.step]);
+
+  // Prevent navigation to select-posts when no posts are available
+  if (params.step === "select-posts" && userPosts.length === 0) {
+    navigate({
+      step: "services-selection",
+    });
+    return null;
+  }
 
   if (
     params.step !== "services-selection" &&
